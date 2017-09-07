@@ -11,7 +11,7 @@
 [![codebeat badge](https://codebeat.co/badges/2fdee091-714d-4860-ab19-dba7587a3158)](https://codebeat.co/projects/github-com-deis-controller-sdk-go)
 [![GoDoc](https://godoc.org/github.com/deis/controller-sdk-go?status.svg)](https://godoc.org/github.com/deis/controller-sdk-go)
 
-This is the Go SDK for interacting with the [Deis Controller](https://github.com/deis/controller).
+This is the Go SDK for interacting with the [Deis Controller](https://github.com/deisthree/controller).
 
 ### Usage
 
@@ -59,4 +59,4 @@ client.Token = token
 
 For a complete usage guide to the SDK, see [full package documentation](https://godoc.org/github.com/deis/controller-sdk-go).
 
-[v2.18]: https://github.com/deis/workflow/releases/tag/v2.18.0
+[v2.18]: https://github.com/deisthree/workflow/releases/tag/v2.18.0

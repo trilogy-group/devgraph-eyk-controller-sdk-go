@@ -5,7 +5,7 @@ def sh = { cmd ->
 }
 
 // Disabling until we have a more sustainable Windows Jenkins Agent plan
-// See https://github.com/deis/jenkins-jobs/issues/351
+// See https://github.com/deisthree/jenkins-jobs/issues/351
 // node('windows') {
 // 	def gopath = pwd() + "\\gopath"
 // 	env.GOPATH = gopath
