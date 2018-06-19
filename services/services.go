@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	deis "github.com/workato/deis-controller-sdk-go"
-	"github.com/workato/deis-controller-sdk-go/api"
+	deis "github.com/deis/controller-sdk-go"
+	"github.com/deis/controller-sdk-go/api"
 )
 
 // List services registered with an app.

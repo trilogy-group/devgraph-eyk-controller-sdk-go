@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"testing"
 
-	deis "github.com/workato/deis-controller-sdk-go"
-	"github.com/workato/deis-controller-sdk-go/api"
+	deis "github.com/deis/controller-sdk-go"
+	"github.com/deis/controller-sdk-go/api"
 )
 
 const servicesFixture string = `
