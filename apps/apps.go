@@ -8,8 +8,8 @@ import (
 	"io/ioutil"
 	"strconv"
 
-	deis "github.com/deis/controller-sdk-go"
-	"github.com/deis/controller-sdk-go/api"
+	deis "github.com/teamhephy/controller-sdk-go"
+	"github.com/teamhephy/controller-sdk-go/api"
 )
 
 // ErrNoLogs is returned when logs are missing from an app.

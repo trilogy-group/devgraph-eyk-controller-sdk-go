@@ -1,4 +1,4 @@
-// Package deis offers a SDK for interacting with the Deis controller API.
+// Package deis offers a SDK for interacting with the Hephy controller API.
 //
 // This package works by creating a client, which contains session information,
 // such as the controller url and user token. The client is then passed to api methods,
@@ -9,8 +9,8 @@
 // This example creates a client and then lists the apps that the user has access to:
 //
 //    import (
-//        deis "github.com/deis/controller-sdk-go"
-//        "github.com/deis/controller-sdk-go/apps"
+//        deis "github.com/teamhephy/controller-sdk-go"
+//        "github.com/teamhephy/controller-sdk-go/apps"
 //    )
 //
 //    //                      Verify SSL, Controller URL, API Token
@@ -29,8 +29,8 @@
 // username and password.
 //
 //    import (
-//        deis "github.com/deis/controller-sdk-go"
-//        "github.com/deis/controller-sdk-go/apps"
+//        deis "github.com/teamhephy/controller-sdk-go"
+//        "github.com/teamhephy/controller-sdk-go/apps"
 //    )
 //
 //    // Create a client with a blank token to pass to login.
