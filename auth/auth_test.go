@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	deis "github.com/deis/controller-sdk-go"
+	deis "github.com/teamhephy/controller-sdk-go"
 )
 
 const registerExpected string = `{"username":"test","password":"opensesame","email":"test@example.com"}`

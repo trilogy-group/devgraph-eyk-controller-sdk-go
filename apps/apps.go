@@ -8,8 +8,8 @@ import (
 	"io/ioutil"
 	"strconv"
 
-	deis "github.com/deis/controller-sdk-go"
-	"github.com/deis/controller-sdk-go/api"
+	deis "github.com/teamhephy/controller-sdk-go"
+	"github.com/teamhephy/controller-sdk-go/api"
 )
 
 // ErrNoLogs is returned when logs are missing from an app.
@@ -18,7 +18,7 @@ var ErrNoLogs = errors.New(
 1) Logger and fluentd pods are running: kubectl --namespace=deis get pods.
 2) The application is writing logs to the logger component by checking that an entry in the ring buffer was created: kubectl --namespace=deis logs <logger pod>
 3) Making sure that the container logs were mounted properly into the fluentd pod: kubectl --namespace=deis exec <fluentd pod> ls /var/log/containers
-3a) If the above command returns saying /var/log/containers cannot be found then please see the following github issue for a workaround: https://github.com/deisthree/logger/issues/50`)
+3a) If the above command returns saying /var/log/containers cannot be found then please see the following github issue for a workaround: https://github.com/deis/logger/issues/50`)
 
 // List lists apps on a Deis controller.
 func List(c *deis.Client, results int) (api.Apps, int, error) {

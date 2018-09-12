@@ -4,7 +4,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/deis/controller-sdk-go/pkg/time"
+	"github.com/teamhephy/controller-sdk-go/pkg/time"
 )
 
 func TestPodsListSorted(t *testing.T) {
