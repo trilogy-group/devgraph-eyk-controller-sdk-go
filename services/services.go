@@ -44,7 +44,7 @@ func List(c *deis.Client, appID string) (api.Services, error) {
 	return services, reqErr
 }
 
-// New adds a new service to an app. App should already exists. 
+// New adds a new service to an app. App should already exists.
 // Service is the way to route some traffic matching given URL pattern to worker different than `web`
 // procfileType - name of the process in Procfile (i.e. <process type> from the `<process type>: <command>`), e.g. `webhooks`
 // for more about Procfile see this https://devcenter.heroku.com/articles/procfile
