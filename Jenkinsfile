@@ -5,11 +5,11 @@ def sh = { cmd ->
 }
 
 // Disabling until we have a more sustainable Windows Jenkins Agent plan
-// See https://github.com/deisthree/jenkins-jobs/issues/351
+// See https://github.com/teamhephy/jenkins-jobs/issues/351
 // node('windows') {
 // 	def gopath = pwd() + "\\gopath"
 // 	env.GOPATH = gopath
-// 	def workdir = gopath + "\\src\\github.com\\deis\\controller-sdk-go"
+// 	def workdir = gopath + "\\src\\github.com\\teamhephy\\controller-sdk-go"
 //
 // 	def pscmd = { String cmd ->
 // 		"powershell -NoProfile -ExecutionPolicy Bypass -Command \"${cmd}\""
@@ -127,7 +127,7 @@ def mktmp = {
 }
 
 node('linux') {
-	def author = "deis"
+	def author = "teamhephy"
 	def flags = ""
 
 	if (git_branch != "master") {
@@ -139,14 +139,14 @@ node('linux') {
 	def tmp_dir = mktmp()
 	def dist_dir = "-e DIST_DIR=/upload -v ${tmp_dir}:/upload"
 
-	def pattern = "github\\.com\\/deis\\/controller-sdk-go\\n\\s+version:\\s+[a-f0-9]+"
-	def replacement = "github\\.com\\/deis\\/controller-sdk-go\\n"
+	def pattern = "github\\.com\\/teamhephy\\/controller-sdk-go\\n\\s+version:\\s+[a-f0-9]+"
+	def replacement = "github\\.com\\/teamhephy\\/controller-sdk-go\\n"
 	replacement += "  repo: https:\\/\\/github\\.com\\/${author}\\/controller-sdk-go\\.git\\n"
 	replacement += "  vcs: git\\n"
 	replacement += "  version: ${git_commit}"
 
 	def build_script = "sh -c 'perl -i -0pe \"s/${pattern}/${replacement}/\" glide.yaml "
-	build_script += "&& rm -rf glide.lock vendor/github.com/deis/controller-sdk-go "
+	build_script += "&& rm -rf glide.lock vendor/github.com/teamhephy/controller-sdk-go "
 	build_script += "&& glide install "
 	build_script += "&& make build-revision'"
 	sh "docker pull ${wcli_image}"

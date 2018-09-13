@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	deis "github.com/deis/controller-sdk-go"
-	"github.com/deis/controller-sdk-go/api"
+	deis "github.com/teamhephy/controller-sdk-go"
+	"github.com/teamhephy/controller-sdk-go/api"
 )
 
 // Info displays an app's tls config.

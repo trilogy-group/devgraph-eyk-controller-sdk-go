@@ -1,14 +1,20 @@
-hash: 86926427d200b3bee32572243896d4f25270e98a1289189e016e5dc1c4acca74
-updated: 2016-06-16T22:46:39.675929588Z
+hash: bf1a304f64de780af95de8a6c33c255e2238ab23968fe9c4823dccfe272d70e0
+updated: 2018-09-11T16:54:19.813927015-04:00
 imports:
 - name: github.com/goware/urlx
-  version: 86bdc24560383254e8b977da31a823eddf904409
+  version: 8bb4a2e4339f55b15164907177e96e9faf885504
 - name: github.com/PuerkitoBio/purell
-  version: 1d5d1cfad45d42ec5f81fa8ef23de09cebc6dcc3
+  version: 0bcb03f4b4d0a9428594752bd2a3b9aa0a9d4bd4
 - name: github.com/PuerkitoBio/urlesc
-  version: 5fa9ff0392746aeae1c4b37fcc42c65afa7a9587
+  version: 5bd2802263f21d8788851d5305584c82a5c75d7e
 - name: golang.org/x/net
-  version: d7bf3545bb0dacf009c535b3d3fbf53ac0a339ab
+  version: c2528b2dd8352441850638a8bb678c2ad056fd3e
   subpackages:
   - idna
-devImports: []
+- name: golang.org/x/text
+  version: 47a200a05c8b3fd1b698571caecbb68beb2611ec
+  subpackages:
+  - transform
+  - unicode/norm
+  - width
+testImports: []

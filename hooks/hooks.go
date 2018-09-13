@@ -7,8 +7,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/deis/controller-sdk-go"
-	"github.com/deis/controller-sdk-go/api"
+	"github.com/teamhephy/controller-sdk-go"
+	"github.com/teamhephy/controller-sdk-go/api"
 )
 
 // UserFromKey retrives a user from their SSH key fingerprint.

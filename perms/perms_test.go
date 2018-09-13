@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	deis "github.com/deis/controller-sdk-go"
+	deis "github.com/teamhephy/controller-sdk-go"
 )
 
 const adminFixture string = `
