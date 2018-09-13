@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	deis "github.com/deis/controller-sdk-go"
-	"github.com/deis/controller-sdk-go/api"
+	deis "github.com/teamhephy/controller-sdk-go"
+	"github.com/teamhephy/controller-sdk-go/api"
 )
 
 // List services registered with an app.
@@ -44,7 +44,13 @@ func List(c *deis.Client, appID string) (api.Services, error) {
 	return services, reqErr
 }
 
-// New adds a service to an app.
+// New adds a new service to an app. App should already exists. 
+// Service is the way to route some traffic matching given URL pattern to worker different than `web`
+// procfileType - name of the process in Procfile (i.e. <process type> from the `<process type>: <command>`), e.g. `webhooks`
+// for more about Procfile see this https://devcenter.heroku.com/articles/procfile
+// pathPattern - one or several regexp patterns separated by comma, all request matching given regexp
+// are routed to the procfileType workers. E.g. `/webhooks/notify,~ ^/users/[0-9]+/.*/webhooks/notify,/webhooks/rest`
+// procfileType and pathPattern are mandatory and should have valid values.
 func New(c *deis.Client, appID string, procfileType string, pathPattern string) (api.Service, error) {
 	u := fmt.Sprintf("/v2/apps/%s/services/", appID)
 
@@ -67,6 +73,7 @@ func New(c *deis.Client, appID string, procfileType string, pathPattern string) 
 }
 
 // Delete service from app
+// If given service for the app doesn't exists then error returned
 func Delete(c *deis.Client, appID string, procfileType string) error {
 	u := fmt.Sprintf("/v2/apps/%s/services/", appID)
 
