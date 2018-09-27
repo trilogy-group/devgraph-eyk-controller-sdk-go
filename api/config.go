@@ -30,6 +30,9 @@ type Config struct {
 	// CPU is used to set process CPU limits. It can be set in terms of whole CPUs
 	// (ex 1) or in milli units to reflect the number of CPU shares (ex 500m).
 	CPU map[string]interface{} `json:"cpu,omitempty"`
+	// Timeout is used to set termination grace period. The key is the process name
+	// and the value is a number in seconds, e.g. 30
+	Timeout map[string]interface{} `json:"termination_grace_period,omitempty"`
 	// Healthcheck is map of healthchecks for each process that the application uses.
 	Healthcheck map[string]*Healthchecks `json:"healthcheck,omitempty"`
 	// Tags restrict applications to run on k8s nodes with that label.
