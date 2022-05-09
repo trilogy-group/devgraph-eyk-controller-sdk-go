@@ -1,5 +1,5 @@
 # the filepath to this repository, relative to $GOPATH/src
-repo_path = github.com/teamhephy/controller-sdk-go
+repo_path = github.com/trilogy-group/devgraph-eyk-controller-sdk-go
 
 REVISION ?= $(shell git rev-parse --short HEAD)
 REGISTRY ?= quay.io/
