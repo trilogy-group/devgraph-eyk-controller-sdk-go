@@ -24,7 +24,7 @@ func List(c *deis.Client, appID string, results int) (api.SharedVolumes, int, er
 }
 
 // Create Create a shared Volume.
-func Create(c *deis.Client, appID string, volumeID string, destinationAppID string, sharedVolume api.SharedVolume) (api.SharedVolume, error) {
+func Create(c *deis.Client, appID string, sharedVolume api.SharedVolume) (api.SharedVolume, error) {
 	body, err := json.Marshal(sharedVolume)
 	if err != nil {
 		return api.SharedVolume{}, err
