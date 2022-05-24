@@ -17,9 +17,9 @@ type SharedVolume struct {
 	// App is the app the tls settings apply to and cannot be updated.
 	App string `json:"app,omitempty"`
 	// ParentVolume is the volume where the mount point is copied from
-	ParentVolume string `json:"parentvolume,omitempty"`
+	Parent_Volume string `json:"parentvolume,omitempty"`
 	// ParentApp is the app the parent volume belongs to
-	ParentApp string `json:"parentapp:omitempty"`
+	Parent_App string `json:"parentapp:omitempty"`
 	// Created is the time that the volume was created and cannot be updated.
 	Created string `json:"created,omitempty"`
 	// Updated is the last time the TLS settings was changed and cannot be updated.
