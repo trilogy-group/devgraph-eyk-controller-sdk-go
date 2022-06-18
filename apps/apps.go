@@ -112,8 +112,8 @@ func Logs(c *deis.Client, appID string, lines int) (string, error) {
 
 // Run a one-time command in your app. This will start a kubernetes job with the
 // same container image and environment as the rest of the app.
-func Run(c *deis.Client, appID string, command string) (api.AppRunResponse, error) {
-	req := api.AppRunRequest{Command: command}
+func Run(c *deis.Client, appID string, command string, process string) (api.AppRunResponse, error) {
+	req := api.AppRunRequest{Command: command, Process: process}
 	body, err := json.Marshal(req)
 
 	if err != nil {
