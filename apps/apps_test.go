@@ -252,7 +252,7 @@ func TestAppsRun(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	actual, err := Run(deis, "example-go", "echo hi", "web")
+	actual, err := Run(deis, "example-go", "echo hi")
 
 	if err != nil {
 		t.Fatal(err)
