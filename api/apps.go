@@ -12,6 +12,11 @@ type App struct {
 // Apps defines a collection of app objects.
 type Apps []App
 
+// AppProcfileProcess defines a dictionary of processes and their counts
+type AppProcfileProcess struct {
+	Processes map[string]interface{} `json:"structure"`
+}
+
 func (a Apps) Len() int           { return len(a) }
 func (a Apps) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a Apps) Less(i, j int) bool { return a[i].ID < a[j].ID }
