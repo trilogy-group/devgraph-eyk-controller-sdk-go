@@ -29,7 +29,7 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 
 	// appResult := api.AppProcfileProcess{}
 	var appResult map[string]interface{}
-	json.Unmarshal([]byte(resApp.Body), &appResult)
+	json.Unmarshal([]byte(resApp), &appResult)
 
 	appProcfleStructure := appResult["structure"]
 
