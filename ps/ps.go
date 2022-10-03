@@ -26,10 +26,12 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
 
 	resApp, resAppErr := c.Request("GET", uapp, nil)
+	defer resApp.Body.Close()
 
 	// appResult := api.AppProcfileProcess{}
 	var appResult map[string]interface{}
-	json.Unmarshal([]byte(resApp), &appResult)
+	json.NewDecoder(resApp.Body).Decode(&appResult)
+	// json.Unmarshal([]byte(resApp), &appResult)
 
 	appProcfleStructure := appResult["structure"]
 
