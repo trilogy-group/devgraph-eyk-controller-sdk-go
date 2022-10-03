@@ -11,7 +11,7 @@ import (
 )
 
 // List lists an app's processes.
-func List(c *deis.Client, appID string, results int) (api.PodsList, int, error) {
+func List(c *deis.Client, appID string, results int) (api.PodsList, []string, int, error) {
 	// Retrieves all Procfile Processes
 	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
 
@@ -33,9 +33,7 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, int, error) 
 	}
 
 	appProcfileProcesses := api.AppProcfileProcess{}
-	if err := json.NewDecoder(resApp.Body).Decode(&appProcfileProcesses); err != nil {
-		return api.AppProcfileProcess{}, -1, err
-	}
+	json.NewDecoder(resApp.Body).Decode(&appProcfileProcesses)
 
 	var procfileNullProcesses []string
 	for k, value := range appProcfileProcesses {
