@@ -24,12 +24,12 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	u := fmt.Sprintf("/v2/apps/%s/pods/", appID)
 	body, count, reqErr := c.LimitedRequest(u, results)
 	if reqErr != nil && !deis.IsErrAPIMismatch(reqErr) {
-		return []api.Pods{}, -1, reqErr
+		return []api.Pods{}, nil, -1, reqErr
 	}
 
 	var procs []api.Pods
 	if err := json.Unmarshal([]byte(body), &procs); err != nil {
-		return []api.Pods{}, -1, err
+		return []api.Pods{}, nil, -1, err
 	}
 
 	appProcfileProcesses := api.AppProcfileProcess{}
