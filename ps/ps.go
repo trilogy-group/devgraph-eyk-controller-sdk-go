@@ -25,13 +25,16 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	// Retrieves all Procfile Processes
 	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
 
-	resApp := c.Request("GET", uapp, nil)
+	resApp, resAppErr := c.Request("GET", uapp, nil)
 
-	appProcfileProcesses := api.AppProcfileProcess{}
-	json.NewDecoder(resApp.Body).Decode(&appProcfileProcesses)
+	// appResult := api.AppProcfileProcess{}
+	var appResult map[string]interface{}
+	json.Unmarshal(resApp.Body, &appResult)
+
+	appProcfleStructure := appResult["structure"].(api.AppProcfileProcess)
 
 	var procfileNullProcesses []string
-	for k, value := range appProcfileProcesses {
+	for k, value := range appProcfleStructure {
 		if value == 0 {
 			procfileNullProcesses = append(procfileNullProcesses, k)
 		}
