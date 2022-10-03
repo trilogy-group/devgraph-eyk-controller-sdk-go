@@ -12,15 +12,6 @@ import (
 
 // List lists an app's processes.
 func List(c *deis.Client, appID string, results int) (api.PodsList, []string, int, error) {
-	// Retrieves all Procfile Processes
-	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
-
-	resApp, reqErrApp := c.Request("GET", uapp, nil)
-	// if reqErrApp != nil && !deis.IsErrAPIMismatch(reqErrApp) {
-	// 	return api.App{}, reqErrApp
-	// }
-	// defer resApp.Body.Close()
-
 	u := fmt.Sprintf("/v2/apps/%s/pods/", appID)
 	body, count, reqErr := c.LimitedRequest(u, results)
 	if reqErr != nil && !deis.IsErrAPIMismatch(reqErr) {
@@ -31,6 +22,10 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	if err := json.Unmarshal([]byte(body), &procs); err != nil {
 		return []api.Pods{}, nil, -1, err
 	}
+	// Retrieves all Procfile Processes
+	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
+
+	resApp := c.Request("GET", uapp, nil)
 
 	appProcfileProcesses := api.AppProcfileProcess{}
 	json.NewDecoder(resApp.Body).Decode(&appProcfileProcesses)
@@ -38,7 +33,7 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	var procfileNullProcesses []string
 	for k, value := range appProcfileProcesses {
 		if value == 0 {
-			append(procfileNullProcesses, k)
+			procfileNullProcesses = append(procfileNullProcesses, k)
 		}
 	}
 	return procs, procfileNullProcesses, count, reqErr
