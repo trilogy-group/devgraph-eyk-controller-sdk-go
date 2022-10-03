@@ -25,7 +25,7 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	// Retrieves all Procfile Processes
 	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
 
-	resApp, resAppErr := c.Request("GET", uapp, nil)
+	resApp, _ := c.Request("GET", uapp, nil)
 	defer resApp.Body.Close()
 
 	// appResult := api.AppProcfileProcess{}
