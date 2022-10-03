@@ -31,10 +31,10 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	var appResult map[string]interface{}
 	json.Unmarshal(resApp.Body, &appResult)
 
-	appProcfleStructure := appResult["structure"].(api.AppProcfileProcess)
+	appProcfleStructure := appResult["structure"]
 
 	var procfileNullProcesses []string
-	for k, value := range appProcfleStructure {
+	for k, value := range appProcfleStructure.(map[string]interface{}) {
 		if value == 0 {
 			procfileNullProcesses = append(procfileNullProcesses, k)
 		}
