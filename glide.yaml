@@ -1,3 +1,3 @@
-package: github.com/teamhephy/controller-sdk-go
+package: github.com/trilogy-group/devgraph-eyk-controller-sdk-go
 import:
 - package: github.com/goware/urlx

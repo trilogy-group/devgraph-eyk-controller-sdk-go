@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	deis "github.com/teamhephy/controller-sdk-go"
-	"github.com/teamhephy/controller-sdk-go/api"
+	deis "github.com/trilogy-group/devgraph-eyk-controller-sdk-go"
+	"github.com/trilogy-group/devgraph-eyk-controller-sdk-go/api"
 )
 
 // List lists an app's builds.
@@ -35,8 +35,8 @@ func List(c *deis.Client, appID string, results int) ([]api.Build, int, error) {
 //
 // This example adds custom registry credentials to an app:
 //    import (
-//    	"github.com/teamhephy/controller-sdk-go/api"
-//    	"github.com/teamhephy/controller-sdk-go/config"
+//    	"github.com/trilogy-group/devgraph-eyk-controller-sdk-go/api"
+//    	"github.com/trilogy-group/devgraph-eyk-controller-sdk-go/config"
 //    )
 //
 //    // Create username/password map

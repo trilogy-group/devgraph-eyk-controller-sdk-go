@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	deis "github.com/teamhephy/controller-sdk-go"
-	"github.com/teamhephy/controller-sdk-go/api"
+	deis "github.com/trilogy-group/devgraph-eyk-controller-sdk-go"
+	"github.com/trilogy-group/devgraph-eyk-controller-sdk-go/api"
 )
 
 // List services registered with an app.
