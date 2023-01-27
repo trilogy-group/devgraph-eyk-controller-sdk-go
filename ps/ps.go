@@ -11,19 +11,63 @@ import (
 )
 
 // List lists an app's processes.
-func List(c *deis.Client, appID string, results int) (api.PodsList, int, error) {
+func List(c *deis.Client, appID string, results int) (api.PodsList, []string, int, error) {
 	u := fmt.Sprintf("/v2/apps/%s/pods/", appID)
 	body, count, reqErr := c.LimitedRequest(u, results)
 	if reqErr != nil && !deis.IsErrAPIMismatch(reqErr) {
-		return []api.Pods{}, -1, reqErr
+		return []api.Pods{}, nil, -1, reqErr
 	}
 
 	var procs []api.Pods
 	if err := json.Unmarshal([]byte(body), &procs); err != nil {
-		return []api.Pods{}, -1, err
+		return []api.Pods{}, nil, -1, err
+	}
+	
+	var procsList []string
+	for _, v := range procs {
+		// fmt.Print(v.Type)
+		procsList = append(procsList, v.Type)
+	}
+	// Retrieves all Procfile Processes
+	uapp := fmt.Sprintf("/v2/apps/%s/", appID)
+
+	resApp, _ := c.Request("GET", uapp, nil)
+	defer resApp.Body.Close()
+
+	// appResult := api.AppProcfileProcess{}
+	var appResult map[string]interface{}
+	json.NewDecoder(resApp.Body).Decode(&appResult)
+	// json.Unmarshal([]byte(resApp), &appResult)
+
+	appProcfileStructure := appResult["procfile_structure"]
+	var procfileAllProcesses []string
+	if rec, ok := appProcfileStructure.(map[string]interface{}); ok {
+		for k, _ := range rec {
+			procfileAllProcesses = append(procfileAllProcesses, k)
+		}
 	}
 
-	return procs, count, reqErr
+	return procs, difference(procfileAllProcesses, procsList), count, reqErr
+}
+
+func difference(slice1 []string, slice2 []string) []string {
+	var diff []string
+
+	for _, s1 := range slice1 {
+		found := false
+		for _, s2 := range slice2 {
+			if s1 == s2 {
+				found = true
+				break
+			}
+		}
+		// String not found. We add it to return slice
+		if !found {
+			diff = append(diff, s1)
+		}
+	}
+
+	return diff
 }
 
 // Scale increases or decreases an app's processes. The processes are specified in the target argument,
@@ -108,3 +152,6 @@ func ByType(processes api.PodsList) api.PodTypes {
 
 	return pts
 }
+
+
+func CheckProcessExists(process string, processList )
