@@ -22,7 +22,7 @@ func List(c *deis.Client, appID string, results int) (api.PodsList, []string, in
 	if err := json.Unmarshal([]byte(body), &procs); err != nil {
 		return []api.Pods{}, nil, -1, err
 	}
-	
+
 	var procsList []string
 	for _, v := range procs {
 		// fmt.Print(v.Type)
@@ -152,6 +152,3 @@ func ByType(processes api.PodsList) api.PodTypes {
 
 	return pts
 }
-
-
-func CheckProcessExists(process string, processList )
