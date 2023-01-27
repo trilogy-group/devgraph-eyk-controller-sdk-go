@@ -127,7 +127,7 @@ def mktmp = {
 }
 
 node('linux') {
-	def author = "teamhephy"
+	def author = "trilogy-group"
 	def flags = ""
 
 	if (git_branch != "master") {
@@ -139,14 +139,16 @@ node('linux') {
 	def tmp_dir = mktmp()
 	def dist_dir = "-e DIST_DIR=/upload -v ${tmp_dir}:/upload"
 
-	def pattern = "github\\.com\\/teamhephy\\/controller-sdk-go\\n\\s+version:\\s+[a-f0-9]+"
-	def replacement = "github\\.com\\/teamhephy\\/controller-sdk-go\\n"
-	replacement += "  repo: https:\\/\\/github\\.com\\/${author}\\/controller-sdk-go\\.git\\n"
+	def pattern = "github\\.com\\/trilogy-group\\/devgraph-eyk-controller-sdk-go\\n\\s+version:\\s+[a-f0-9]+"
+	def replacement = "github\\.com\\/trilogy-group\\/devgraph-eyk-controller-sdk-go\\n"
+	replacement += "  repo: https:\\/\\/github\\.com\\/${author}\\/devgraph-eyk-controller-sdk-go\\.git\\n"
 	replacement += "  vcs: git\\n"
 	replacement += "  version: ${git_commit}"
 
 	def build_script = "sh -c 'perl -i -0pe \"s/${pattern}/${replacement}/\" glide.yaml "
-	build_script += "&& rm -rf glide.lock vendor/github.com/trilogy-group/devgraph-eyk-controller-sdk-go "
+
+	build_script += "&& rm -rf glide.lock vendor/github.com/trilogy-group/devgraph-eyk-controller-sdk-go"
+
 	build_script += "&& glide install "
 	build_script += "&& make build-revision'"
 	sh "docker pull ${wcli_image}"

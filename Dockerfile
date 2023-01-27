@@ -7,10 +7,10 @@ RUN chmod +x /usr/local/bin/codecov
 COPY glide.yaml /go/src/github.com/trilogy-group/devgraph-eyk-controller-sdk-go/
 COPY glide.lock /go/src/github.com/trilogy-group/devgraph-eyk-controller-sdk-go/
 
-WORKDIR /go/src/github.com/trilogy-group/devgraph-eyk-controller-sdk-go
+WORKDIR /go/src/github.com/trilogy-group/devgraph-eyk-controller-sdk-go/
 
 RUN glide install --strip-vendor
 
 COPY ./_scripts /usr/local/bin
 
-COPY . /go/src/github.com/trilogy-group/devgraph-eyk-controller-sdk-go
+COPY . /go/src/github.com/trilogy-group/devgraph-eyk-controller-sdk-go/
