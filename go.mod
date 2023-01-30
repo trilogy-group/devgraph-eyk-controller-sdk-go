@@ -2,11 +2,12 @@ module github.com/trilogy-group/devgraph-eyk-controller-sdk-go
 
 go 1.18
 
-require github.com/goware/urlx v0.0.0-20160722204212-8bb4a2e4339f
+require github.com/goware/urlx v0.3.2
 
 require (
-	github.com/PuerkitoBio/purell v1.1.0 // indirect
-	github.com/PuerkitoBio/urlesc v0.0.0-20160726150825-5bd2802263f2 // indirect
-	golang.org/x/net v0.0.0-20150927182833-c2528b2dd835 // indirect
-	golang.org/x/text v0.0.0-20161209224335-47a200a05c8b // indirect
+	github.com/PuerkitoBio/purell v1.1.1 // indirect
+	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
+	github.com/vikyd/go-checksum v1.0.0 // indirect
+	golang.org/x/net v0.0.0-20190213061140-3a22650c66bd // indirect
+	golang.org/x/text v0.3.0 // indirect
 )

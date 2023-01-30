@@ -144,7 +144,7 @@ func TestProcessesList(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	actual, _, err := List(deis, "example-go", 100)
+	actual, _, _, err := List(deis, "example-go", 100)
 
 	if err != nil {
 		t.Fatal(err)
